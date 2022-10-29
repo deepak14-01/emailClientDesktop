@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="246.0" prefWidth="328.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dee.controller.LoginPageController">
+<AnchorPane prefHeight="246.0" prefWidth="328.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="60.0" layoutY="110.0" prefHeight="26.0" prefWidth="207.0" promptText="Password">
+        <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="60.0" layoutY="102.0" prefHeight="26.0" prefWidth="207.0" promptText="Password">
             <font>
                 <Font size="14.0" />
             </font>
         </PasswordField>
-        <Button fx:id="signIn" layoutX="107.0" layoutY="179.0" mnemonicParsing="false" onAction="#signInButtonAction" prefHeight="26.0" prefWidth="114.0" text="SIGN IN">
+        <Button fx:id="signIn" layoutX="107.0" layoutY="161.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="26.0" prefWidth="114.0" text="SIGN IN">
             <font>
                 <Font name="Arimo Regular" size="14.0" />
             </font>
@@ -24,11 +23,13 @@
                 <DropShadow blurType="GAUSSIAN" height="0.0" radius="0.0" width="0.0" />
             </effect>
         </Button>
-        <TextField fx:id="emailId" alignment="CENTER" layoutX="60.0" layoutY="76.0" prefHeight="26.0" prefWidth="207.0" promptText="Your Email Address">
+        <TextField fx:id="emailAddressField" alignment="CENTER" layoutX="60.0" layoutY="62.0" prefHeight="26.0" prefWidth="207.0" promptText="Your Email Address">
             <font>
                 <Font name="Arimo Regular" size="14.0" />
             </font>
         </TextField>
         <Label layoutX="150.0" layoutY="206.0" />
+      <Label layoutX="150.0" layoutY="14.0" text="Login" />
+      <Label layoutX="150.0" layoutY="206.0" text="Label" textAlignment="CENTER" />
     </children>
 </AnchorPane>

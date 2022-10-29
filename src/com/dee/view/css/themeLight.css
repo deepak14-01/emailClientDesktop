@@ -1,0 +1,48 @@
+*{
+    -fx-background-color: #c5d6d9;
+}
+
+.big{
+    -fx-font-size: 16pt;
+    -fx-text-fill: #333333;
+}
+/*.root {*/
+/*    -fx-background-color: #F5F5F5;*/
+/*}*/
+
+.button {
+    -fx-background-color: #F5F5F5;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+.label {
+    -fx-text-fill: #333333;
+}
+
+.choice-box {
+    -fx-background-color: #F5F5F5;
+    -fx-border-color: #CCCCCC;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+.choice-box .arrow-button {
+    -fx-background-color: #F5F5F5;
+    -fx-border-color: #CCCCCC;
+}
+
+.choice-box:focused,
+.choice-box:selected {
+    -fx-background-color: #ECECEC;
+    -fx-border-color: #333333;
+}
+
+.choice-box .arrow {
+    -fx-background-color: #333333;
+}
+
+.choice-box:focused .text,
+.choice-box:selected .text {
+    -fx-text-fill: white;
+}
