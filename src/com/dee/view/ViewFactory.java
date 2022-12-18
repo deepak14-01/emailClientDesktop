@@ -1,10 +1,7 @@
 package com.dee.view;
 
 import com.dee.EmailManager;
-import com.dee.controller.BaseController;
-import com.dee.controller.LoginWindowController;
-import com.dee.controller.MainWindowController;
-import com.dee.controller.OptionsWindowController;
+import com.dee.controller.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -68,6 +65,10 @@ public class ViewFactory {
         BaseController controller = new OptionsWindowController(emailManager, this, "OptionsWindow.fxml");
         initializeStage(controller);
     }
+    public void showEmailDetailsWindow(){
+        BaseController controller = new EmailDetailsController(emailManager, this, "EmailDetailsWindow.fxml");
+        initializeStage(controller);
+    }
 
     private void initializeStage(BaseController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(controller.getFxmlName()));
@@ -98,5 +99,9 @@ public class ViewFactory {
             scene.getStylesheets().add(getClass().getResource(ColorTheme.geCssPath(colorTheme)).toExternalForm());
             scene.getStylesheets().add(getClass().getResource(FontSize.geCssPath(fontSize)).toExternalForm());
         }
+    }
+    public void showComposeMessageWindow() {
+        BaseController controller = new ComposeMessageController(emailManager, this, "ComposeMessageWindow.fxml");
+        initializeStage(controller);
     }
 }
