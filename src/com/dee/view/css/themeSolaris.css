@@ -1,0 +1,42 @@
+.big{
+    -fx-font-size: 16pt;
+    -fx-text-fill: #839496;
+}
+.root {
+    -fx-background-color: #002b36;
+}
+
+.button {
+    -fx-background-color: #859900;
+    -fx-text-fill: #fdf6e3;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #93a1a1;
+}
+
+.label {
+    -fx-text-fill: #839496;
+}
+
+.choice-box {
+    -fx-background-color: #073642;
+    -fx-border-color: #839496;
+    -fx-text-fill: #fdf6e3;
+    -fx-font-weight: bold;
+}
+
+.choice-box:focused {
+    -fx-background-color: #586e75;
+    -fx-border-color: #839496;
+}
+
+.choice-box .arrow-button {
+    -fx-background-color: #073642;
+    -fx-border-color: #839496;
+}
+
+.choice-box .arrow {
+    -fx-background-color: #fdf6e3;
+}
