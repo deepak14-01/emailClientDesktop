@@ -32,17 +32,17 @@ public class EmailAccount {
     public void setStore(Store store) {
         this.store = store;
     }
-
+//    bqfuptlnlrsfydlx
     public EmailAccount(String address, String password) {
         this.address = address;
         this.password = password;
         properties = new Properties();
-        properties.put("incomingHost", "imap.gmail.com");
-        properties.put("mail.store.protocol", "imaps");
+        properties.put("incomingHost", "outlook.office365.com");
+        properties.put("mail.store.protocol", "imap");
 
-        properties.put("mail.transport.protocol", "smtps");
-        properties.put("mail.smtps.host", "smtp.gmail.com");
-        properties.put("mail.smtps.auth", "true");
-        properties.put("outgoingHost", "smtp.gmail.com");
+        properties.put("mail.transport.protocol", "smtp");
+        properties.put("mail.smtp.host", "outlook.office365.com");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("outgoingHost", "outlook.office365.com");
     }
 }

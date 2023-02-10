@@ -16,6 +16,7 @@ import java.nio.file.FileSystemAlreadyExistsException;
 import java.util.ArrayList;
 
 public class ViewFactory {
+    private boolean mainViewInitialized = false;
     private EmailManager emailManager;
     private ArrayList<Stage> activeStages;
 
@@ -38,6 +39,9 @@ public class ViewFactory {
     public void setColorTheme(ColorTheme colorTheme) {
         this.colorTheme = colorTheme;
     }
+    public boolean isMainViewInitialized(){
+        return mainViewInitialized;
+    }
 
     public ViewFactory(EmailManager emailManager) {
         this.emailManager = emailManager;
@@ -55,6 +59,7 @@ public class ViewFactory {
 
         BaseController controller = new MainWindowController(emailManager, this, "MainWindow.fxml");
         initializeStage(controller);
+        mainViewInitialized = true;
     }
 
     public void showOptionsWindow() {

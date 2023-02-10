@@ -15,7 +15,7 @@
                 <Font size="14.0" />
             </font>
         </PasswordField>
-        <Button fx:id="signIn" layoutX="107.0" layoutY="161.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="26.0" prefWidth="114.0" text="SIGN IN">
+        <Button fx:id="signIn" layoutX="107.0" layoutY="154.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="26.0" prefWidth="114.0" text="SIGN IN">
             <font>
                 <Font name="Arimo Regular" size="14.0" />
             </font>
@@ -30,6 +30,6 @@
         </TextField>
         <Label layoutX="150.0" layoutY="206.0" />
       <Label layoutX="150.0" layoutY="14.0" text="Login" />
-      <Label layoutX="150.0" layoutY="206.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="errorLabel" layoutX="89.0" layoutY="205.0" prefHeight="18.0" prefWidth="152.0" textAlignment="CENTER" />
     </children>
 </AnchorPane>

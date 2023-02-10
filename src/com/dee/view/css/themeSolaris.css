@@ -11,7 +11,9 @@
     -fx-text-fill: #fdf6e3;
     -fx-font-weight: bold;
 }
-
+.text-field {
+    -fx-text-fill: white;
+}
 .button:hover {
     -fx-background-color: #93a1a1;
 }

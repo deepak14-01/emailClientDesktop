@@ -6,6 +6,9 @@
     -fx-text-fill: white;
 }
 
+.text-field {
+    -fx-text-fill: white;
+}
 .button {
     -fx-background-color: #424242;
     -fx-text-fill: white;
