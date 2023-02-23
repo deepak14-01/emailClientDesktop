@@ -1,21 +1,37 @@
 package com.dee.controller.services;
 
 import com.dee.model.EmailTreeItem;
+import com.dee.view.IconResolver;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
 import javax.mail.Folder;
+import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Store;
+
+import javax.mail.event.MessageCountEvent;
+import javax.mail.event.MessageCountListener;
+import java.util.List;
+import java.util.Objects;
+
 
 public class FetchFoldersService extends Service<Void> {
 
     private Store store;
     private EmailTreeItem<String> foldersRoot;
+    private List<Folder> folderList;
+    private IconResolver iconResolver = new IconResolver();
+    private EmailTreeItem<String> def;
 
-    public FetchFoldersService(Store store, EmailTreeItem<String> foldersRoot) {
-        this.store = store;
-        this.foldersRoot = foldersRoot;
+    public EmailTreeItem<String> getDef() {
+        return def;
+    }
+
+    public FetchFoldersService(Store store, EmailTreeItem<String> foldersRoot, List<Folder> folderList) {
+            this.store = store;
+            this.foldersRoot = foldersRoot;
+            this.folderList = folderList;
     }
 
     @Override
@@ -36,15 +52,43 @@ public class FetchFoldersService extends Service<Void> {
 
     private void handleFolders(Folder[] folders, EmailTreeItem<String> foldersRoot) throws MessagingException {
         for (Folder folder : folders) {
+            folderList.add(folder);
             EmailTreeItem<String> emailTreeItem = new EmailTreeItem<String>(folder.getName());
+
+            if(Objects.equals(folder.getName(), "Inbox") && def == null) {
+                def = emailTreeItem;
+                System.out.println(folder.getName());
+            }
+            emailTreeItem.setGraphic(iconResolver.getIconForFolder(folder.getName()));
             foldersRoot.getChildren().add((emailTreeItem));
             foldersRoot.setExpanded(true);
             fetchMessagesOnFolder(folder, emailTreeItem);
+            addMessageListenerToFolder(folder, emailTreeItem);
             if (folder.getType() == Folder.HOLDS_FOLDERS) {
                 Folder[] subFolders = folder.list();
                 handleFolders(subFolders, emailTreeItem);
             }
         }
+    }
+
+    private void addMessageListenerToFolder(Folder folder, EmailTreeItem<String> emailTreeItem) {
+        folder.addMessageCountListener(new MessageCountListener() {
+            @Override
+            public void messagesAdded(MessageCountEvent e) {
+                for (int i = 0; i < e.getMessages().length; i++) {
+                    try {
+                        Message message = folder.getMessage(folder.getMessageCount() - i);
+                        emailTreeItem.addEmailToTop(message);
+                    } catch (MessagingException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+            @Override
+            public void messagesRemoved(MessageCountEvent e) {
+                System.out.println("message removed event!!!: " + e);
+            }
+        });
     }
 
     private void fetchMessagesOnFolder(Folder folder, EmailTreeItem<String> emailTreeItem) {
@@ -58,7 +102,8 @@ public class FetchFoldersService extends Service<Void> {
                             folder.open(Folder.READ_WRITE);
                             int folderSize = folder.getMessageCount();
                             for (int i = folderSize; i > 0; i--) {
-                                System.out.println(folder.getMessage(i).getSubject());
+//                                System.out.println(folder.getMessage(i).getSubject());
+                                emailTreeItem.addEmail(folder.getMessage(i));
                             }
                         }
                         return null;
